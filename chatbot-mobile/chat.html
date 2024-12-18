@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/71b2941267.js" crossorigin="anonymous"></script>
+  </body>
+  <body >
+    <style>
+        .heading-background{
+    background-color: rgb(122, 144, 144);
+    border-radius: 15px;
+    margin: 10px;
+}
+
+h1{
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.image{
+    width: 45%;
+    margin-top: 15px;
+    
+};
+
+.background{
+    background-color: beige;  
+}
+
+input{
+    background-color: beige;
+    border-radius: 5px;
+    padding: 10px;
+    
+}
+
+.button{
+    background-color:  rgb(122, 144, 144);
+    margin-left: 5px;
+    padding: 15px;
+}
+
+.chatcontainer{
+    margin-left: 10px;
+}
+
+.msg-to-chatbot-container {
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.msg-to-chatbot {
+    background-color: #cbd2d9;
+    font-family: "Roboto";
+    font-weight: 900;
+    border-radius: 16px;
+    padding: 10px;
+}
+
+.msg-from-chatbot-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.msg-from-chatbot {
+    color: white;
+    background-color: #e57742;
+    font-family: "Roboto";
+    font-weight: 900;
+    border-radius: 16px;
+    padding: 10px;
+}
+
+.msgback{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.receive{
+    background-color: #e57742;
+    color: white;
+    font-family: "roboto";
+    border-radius: 10px;
+    padding: 10px;
+
+}
+
+
+    </style>
+    <div class="background">
+    <div class="heading-background">
+        <h1 class="text-center">Chat Bot</h1>
+    </div>
+    <div class="bot-image">
+        <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/chatbot-bot-img.png" class="image">
+    </div>
+
+    <div class="chatcontainer"  id="chatcontainer">
+     
+    </div>
+
+    <div class="d-flex flex-row justify-content-end">
+      <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/chatbot-boy-img.png" class="image"/>
+    </div>
+
+    <div class="d-flex flex-row justify-content-center fixed-bottom">
+      <input type="text" id="input" />
+      <button class="button " id="sendbutton">Send</button>
+    </div>
+    
+  </div>
+  </body>
+  <script>
+    let msgarray=["hi","Good Morning","hello","how are you?","fine","you?"];
+let input=document.getElementById("input");
+let chatcontainer=document.getElementById("chatcontainer");
+let sendbutton=document.getElementById("sendbutton");
+
+function sendmsgfromuser(){
+    let usermsg=input.value;
+
+    let msgcontainer=document.createElement("div");
+    chatcontainer.appendChild(msgcontainer);
+    msgcontainer.classList.add("msg-to-chatbot-container");
+
+    if(usermsg===""){
+        alert("Enter msg");
+        return;
+    }
+
+    let msgvalue=document.createElement("span");
+    msgcontainer.appendChild(msgvalue);
+    msgvalue.textContent=usermsg;
+    msgvalue.classList.add("msg-to-chatbot")
+
+    input.value="";
+    receivemsgfromuser();
+}
+
+sendbutton.onclick=function(){
+    sendmsgfromuser();
+}
+  
+function receivemsgfromuser(){
+    let length=msgarray.length;
+
+    let value=msgarray[Math.ceil(Math.random()*length)-1]
+    
+
+    let receivermsgcontainer=document.createElement("div");
+    chatcontainer.appendChild(receivermsgcontainer);
+    receivermsgcontainer.classList.add("msgback");
+
+    let  receivermsgvalue=document.createElement("span");
+    receivermsgcontainer.appendChild(receivermsgvalue);
+    receivermsgvalue.textContent=value;
+    receivermsgvalue.classList.add("receive")
+    a=a+1;
+    if(a>length){
+        return 0;
+    }
+}
+  </script>
+</html>
